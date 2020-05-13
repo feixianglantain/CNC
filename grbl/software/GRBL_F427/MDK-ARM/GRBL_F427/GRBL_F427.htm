@@ -3,7 +3,7 @@
 <title>Static Call Graph - [GRBL_F427\GRBL_F427.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image GRBL_F427\GRBL_F427.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sun May 10 16:07:25 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed May 13 19:57:21 2020
 <BR><P>
 <H3>Maximum Stack Usage =        776 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -118,7 +118,7 @@ Function Pointers
  <LI><a href="#[6]">UsageFault_Handler</a> from stm32f4xx_it.o(i.UsageFault_Handler) referenced from startup_stm32f427xx.o(RESET)
  <LI><a href="#[b]">WWDG_IRQHandler</a> from startup_stm32f427xx.o(.text) referenced from startup_stm32f427xx.o(RESET)
  <LI><a href="#[65]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_stm32f427xx.o(.text)
- <LI><a href="#[63]">main</a> from main_1.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
+ <LI><a href="#[63]">main</a> from main.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
 <P>
 <H3>
@@ -966,12 +966,12 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = HAL_TIM_IRQHandler &rArr; HAL_TIM_PeriodElapsedCallback &rArr; TIMER1_COMPA_vect &rArr; st_go_idle &rArr; delay_ms &rArr; _delay_ms &rArr; _delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_CommutationCallback
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_BreakCallback
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_TriggerCallback
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_PulseFinishedCallback
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_OC_DelayElapsedCallback
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IC_CaptureCallback
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_CommutationCallback
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIMEx_BreakCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
@@ -1020,7 +1020,7 @@ Global Symbols
 <P><STRONG><a name="[3]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
-<P><STRONG><a name="[aa]"></a>MX_GPIO_Init</STRONG> (Thumb, 134 bytes, Stack size 32 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[aa]"></a>MX_GPIO_Init</STRONG> (Thumb, 168 bytes, Stack size 32 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1095,7 +1095,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
-<P><STRONG><a name="[b7]"></a>SystemClock_Config</STRONG> (Thumb, 212 bytes, Stack size 80 bytes, main_1.o(i.SystemClock_Config))
+<P><STRONG><a name="[b7]"></a>SystemClock_Config</STRONG> (Thumb, 212 bytes, Stack size 80 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SYSTICK_Config
@@ -1162,7 +1162,7 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
-<P><STRONG><a name="[ad]"></a>_Error_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, main_1.o(i._Error_Handler))
+<P><STRONG><a name="[ad]"></a>_Error_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, main.o(i._Error_Handler))
 <BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
@@ -1717,7 +1717,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mc_line
 </UL>
 
-<P><STRONG><a name="[63]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main_1.o(i.main))
+<P><STRONG><a name="[63]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 776<LI>Call Chain = main &rArr; grbl_main &rArr; protocol_main_loop &rArr; system_execute_line &rArr; system_execute_startup &rArr; gc_execute_line &rArr; mc_arc &rArr; mc_line &rArr; spindle_sync &rArr; protocol_buffer_synchronize &rArr; protocol_execute_realtime &rArr; protocol_exec_rt_suspend &rArr; delay_sec &rArr;  protocol_execute_realtime (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;grbl_main
@@ -2602,7 +2602,7 @@ Global Symbols
 <LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_exec_rt_system
 </UL>
 
-<P><STRONG><a name="[10a]"></a>st_wake_up</STRONG> (Thumb, 110 bytes, Stack size 8 bytes, stepper.o(i.st_wake_up))
+<P><STRONG><a name="[10a]"></a>st_wake_up</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, stepper.o(i.st_wake_up))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = st_wake_up
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT

@@ -287,7 +287,7 @@ void st_wake_up()
       //   step_pulse_time = -(((settings.pulse_microseconds-2)*TICKS_PER_MICROSECOND) >> 3);
       //st.step_pulse_time = -(((settings.pulse_microseconds-2)*TICKS_PER_MICROSECOND) >> 3);
 	  //张纪宽修改bug，因为STM32的定时器模式跟AVR不同，STM32是从0开始计数，计数到设定值后进入中断,所以不需要取反
-	   st.step_pulse_time = ((settings.pulse_microseconds-2)*TICKS_PER_MICROSECOND) >> 3;
+	   st.step_pulse_time = ((settings.pulse_microseconds-2)*TICKS_PER_MICROSECOND) ;//>> 3; 定时器的时钟频率直接设为了1MHz因此不需右移
 
 
     
@@ -484,6 +484,7 @@ void TIMER1_COMPA_vect(void)
   TCCR0B = (1<<CS01); // Begin Timer0. Full speed, 1/8 prescaler
 #else
   TIM4->ARR = st.step_pulse_time;
+  //TIM4->CNT = 0;
   HAL_TIM_Base_Start_IT(&htim4); //TIM4->CR1 |= 0X01;
 #endif
   busy = true;
@@ -649,7 +650,7 @@ ISR(TIMER0_OVF_vect)
 }
 #else
 //TIM4脉宽
-void TIMER0_OVF_vect()
+void TIMER0_OVF_vect(void)
 {
     X_STEP_PORT = (X_STEP_PORT & ~X_STEP_MASK) | (step_port_invert_mask & X_STEP_MASK);
 	Y_STEP_PORT = (Y_STEP_PORT & ~Y_STEP_MASK) | (step_port_invert_mask & Y_STEP_MASK);

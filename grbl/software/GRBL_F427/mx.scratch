@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>E:\CNC&#38613;&#21051;&#26426;\grbl\GRBL_F427\\GRBL_F427</ProjectName>
+<ProjectName>E:\mach3\grbl\grbl\software\GRBL_F427\\GRBL_F427</ProjectName>
 <ProjectNature>C</ProjectNature> 
 <CMSIS>..\Drivers\CMSIS</CMSIS>
-<HAL_Driver>D:\STM32CubeMX\Repository\STM32Cube_FW_F4_V1.21.0\Drivers\CMSIS</HAL_Driver>
+<HAL_Driver>C:\Users\Administrator\STM32Cube\Repository\STM32Cube_FW_F4_V1.21.0\Drivers\CMSIS</HAL_Driver>
 <Toolchain>MDK-ARM</Toolchain>
 	<Toolversion>5</Toolversion>
 <Version>0</Version>
