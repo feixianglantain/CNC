@@ -605,7 +605,7 @@ I (..\grbl\serial.h)(0x5EBAC569)
 I (..\grbl\spindle_control.h)(0x5EBAC569)
 I (..\grbl\stepper.h)(0x5EBAC569)
 I (..\grbl\jog.h)(0x5EBAC569)
-F (..\grbl\report.c)(0x5EBAC569)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\grbl-I.\RTE\_GRBL_F427-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DSTM32-o grbl_f427\report.o --omf_browse grbl_f427\report.crf --depend grbl_f427\report.d)
+F (..\grbl\report.c)(0x5EC3A046)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\grbl-I.\RTE\_GRBL_F427-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DSTM32-o grbl_f427\report.o --omf_browse grbl_f427\report.crf --depend grbl_f427\report.d)
 I (..\grbl\grbl.h)(0x5EBAC569)
 I (../Inc/main.h)(0x5EBBD6A5)
 I (../Inc/delay.h)(0x5EBAC569)
@@ -846,7 +846,7 @@ I (..\grbl\spindle_control.h)(0x5EBAC569)
 I (..\grbl\stepper.h)(0x5EBAC569)
 I (..\grbl\jog.h)(0x5EBAC569)
 F (..\grbl\spindle_control.h)(0x5EBAC569)()
-F (..\grbl\stepper.c)(0x5EBBDD4A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\grbl-I.\RTE\_GRBL_F427-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DSTM32-o grbl_f427\stepper.o --omf_browse grbl_f427\stepper.crf --depend grbl_f427\stepper.d)
+F (..\grbl\stepper.c)(0x5EBBE1A0)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ..\grbl-I.\RTE\_GRBL_F427-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="523" -D_RTE_ -DSTM32F427xx -DUSE_HAL_DRIVER -DSTM32F427xx -DSTM32-o grbl_f427\stepper.o --omf_browse grbl_f427\stepper.crf --depend grbl_f427\stepper.d)
 I (..\grbl\grbl.h)(0x5EBAC569)
 I (../Inc/main.h)(0x5EBBD6A5)
 I (../Inc/delay.h)(0x5EBAC569)

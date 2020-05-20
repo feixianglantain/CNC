@@ -38,7 +38,7 @@ static void report_util_line_feed() { printPgmString(PSTR("\r\n")); }
 static void report_util_feedback_line_feed() { serial_write(']'); report_util_line_feed(); }
 static void report_util_gcode_modes_G() { printPgmString(PSTR(" G")); }
 static void report_util_gcode_modes_M() { printPgmString(PSTR(" M")); }
-// static void report_util_comment_line_feed() { serial_write(')'); report_util_line_feed(); }
+ static void report_util_comment_line_feed() { serial_write(')'); report_util_line_feed(); }
 static void report_util_axis_values(float *axis_value) {
   uint8_t idx;
   for (idx=0; idx<N_AXIS; idx++) {
@@ -47,7 +47,7 @@ static void report_util_axis_values(float *axis_value) {
   }
 }
 
-/*
+
 static void report_util_setting_string(uint8_t n) {
   serial_write(' ');
   serial_write('(');
@@ -92,17 +92,19 @@ static void report_util_setting_string(uint8_t n) {
   }
   report_util_comment_line_feed();
 }
-*/
+
 
 static void report_util_uint8_setting(uint8_t n, int val) { 
   report_util_setting_prefix(n); 
   print_uint8_base10(val); 
-  report_util_line_feed(); // report_util_setting_string(n); 
+  //report_util_line_feed(); // 
+	report_util_setting_string(n); 
 }
 static void report_util_float_setting(uint8_t n, float val, uint8_t n_decimal) { 
   report_util_setting_prefix(n); 
   printFloat(val,n_decimal);
-  report_util_line_feed(); // report_util_setting_string(n);
+  //report_util_line_feed(); // 
+	report_util_setting_string(n);
 }
 
 
