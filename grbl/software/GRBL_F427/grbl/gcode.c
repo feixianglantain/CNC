@@ -135,14 +135,15 @@ uint8_t gc_execute_line(char *line)
 
     // Check if the g-code word is supported or errors due to modal group violations or has
     // been repeated in the g-code block. If ok, update the command or record its value.
-    switch(letter) {
-
+    switch(letter) 
+	{
       /* 'G' and 'M' Command Words: Parse commands and check for modal group violations.
          NOTE: Modal group numbers are defined in Table 4 of NIST RS274-NGC v3, pg.20 */
 
       case 'G':
         // Determine 'G' command and its modal group
-        switch(int_value) {
+        switch(int_value) 
+		{
           case 10: case 28: case 30: case 92:
             // Check for G10/28/30/92 being called with G0/1/2/3/38 on same block.
             // * G43.1 is also an axis command but is not explicitly defined this way.
@@ -349,6 +350,13 @@ uint8_t gc_execute_line(char *line)
      This relegates the next execution step as only updating the system g-code modes and
      performing the programmed actions in order. The execution step should not require any
      conversion calculations and would only require minimal checks necessary to execute.
+步骤3：错误检查此块中传递的所有命令和值。 此步骤可确保所有命令对于执行均有效，并尽可能遵循NIST标准。 
+  如果发现错误，则该块中的所有命令和值都将转储，并且不会更新活动的系统g代码模式。 如果该块正常，
+  则将基于该块的命令更新活动的系统g代码模式，并发出执行信号。 同样，我们必须根据解析的块设置的模式对所有传递的值进行预转换。 
+  有许多错误检查需要目标信息，只有我们将这些值与错误检查一起转换时，才能准确计算目标信息。 
+  这将下一个执行步骤降级为仅更新系统g代码模式并按顺序执行已编程的动作。 
+  执行步骤不应要求任何转换计算，而仅需要执行所需的最少检查。  
+  
   */
 
   /* NOTE: At this point, the g-code block has been parsed and the block line can be freed.
@@ -360,12 +368,20 @@ uint8_t gc_execute_line(char *line)
      compatible variables. This data contains all of the information necessary to error-check the
      new g-code block when the EOL character is received. However, this would break Grbl's startup
      lines in how it currently works and would require some refactoring to make it compatible.
+	 
+	 注意：此时，已经解析了g代码块，并且可以释放该块行。 
+	 注意：在将来的某个时候，也有可能分解STEP 2，以逐个单词而不是整个块的形式对块进行逐段分析。 
+	 这样可以消除为整个块维护较大的字符串变量的需要，并释放了一些内存。 为此，仅需在STEP 1中保留所有数据，
+	 例如新的块数据结构，模态组和值位标志跟踪变量以及轴数组索引兼容变量。 
+	 该数据包含接收到EOL字符时对新g代码块进行错误检查所需的所有信息。 
+	 但是，这将破坏Grbl的启动方式，使其目前无法正常工作，并且需要进行一些重构以使其兼容。
   */
 
-  // [0. Non-specific/common error-checks and miscellaneous setup]:
+  // [0. Non-specific/common error-checks and miscellaneous setup]:非特定/常见错误检查和其他设置
 
   // Determine implicit axis command conditions. Axis words have been passed, but no explicit axis
   // command has been sent. If so, set axis command to current motion mode.
+  //确定隐式轴命令条件。 轴字已传递，但未发送任何显式轴命令。 如果是这样，请将轴命令设置为当前运动模式。
   if (axis_words) {
     if (!axis_command) { axis_command = AXIS_COMMAND_MOTION_MODE; } // Assign implicit motion-mode
   }
@@ -383,6 +399,11 @@ uint8_t gc_execute_line(char *line)
   // single-meaning value words may be removed as they are used. Also, axis words are treated in the
   // same way. If there is an explicit/implicit axis command, XYZ words are always used and are
   // are removed at the end of error-checking.
+  /*
+  在错误检查结束时跟踪未使用的单词。 注意：在错误检查结束时，一次性删除所有单值单词，因为它们总是在出现时使用。 
+  这样做是为了节省一些闪存字节。 为了清楚起见，可以在使用单义值词时将其删除。 同样，以相同的方式处理轴字。 
+  如果存在显式/隐式轴命令，则始终使用XYZ字，并在错误检查结束时将其删除。
+  */
 
   // [1. Comments ]: MSG's NOT SUPPORTED. Comment handling performed by protocol.
 

@@ -84,9 +84,11 @@ void protocol_main_loop()
 	
     // Process one line of incoming serial data, as the data becomes available. Performs an
     // initial filtering by removing spaces and comments and capitalizing all letters.
+	/*当数据可用时，处理一行输入的串行数据。 并执行删除空格和注释并大写所有字母等初始过滤*/
     while((c = serial_read()) != SERIAL_NO_DATA) 
     {
-      if ((c == '\n') || (c == '\r')) { // End of line reached
+      if ((c == '\n') || (c == '\r'))  // End of line reached
+	  {
 
         protocol_execute_realtime(); // Runtime command check point.
         if (sys.abort) { return; } // Bail to calling function upon system abort
@@ -103,14 +105,16 @@ void protocol_main_loop()
         } else if (line[0] == 0) {
           // Empty or comment line. For syncing purposes.
           report_status_message(STATUS_OK);
-        } else if (line[0] == '$') {
-          // Grbl '$' system command
+        } else if (line[0] == '$')  // Grbl '$' system command 系统命令
+		{
+          
           report_status_message(system_execute_line(line));
         } else if (sys.state & (STATE_ALARM | STATE_JOG)) {
           // Everything else is gcode. Block if in alarm or jog mode.
           report_status_message(STATUS_SYSTEM_GC_LOCK);
-        } else {
-          // Parse and execute g-code block.
+        } else 
+		{ // Parse and execute g-code block. 解析和执行g代码块
+          
           report_status_message(gc_execute_line(line));
         }
 
@@ -118,27 +122,36 @@ void protocol_main_loop()
         line_flags = 0;
         char_counter = 0;
 
-      } else {
+      } else 
+	  {
 
-        if (line_flags) {
+        if (line_flags) 
+		{
           // Throw away all (except EOL) comment characters and overflow characters.
-          if (c == ')') {
-            // End of '()' comment. Resume line allowed.
+		  // 丢弃所有（EOL除外）注释字符和溢出字符
+          if (c == ')') 
+		  {
+            // End of '()' comment. Resume line allowed. 注释结束,恢复到正常的行接收
             if (line_flags & LINE_FLAG_COMMENT_PARENTHESES) { line_flags &= ~(LINE_FLAG_COMMENT_PARENTHESES); }
           }
-        } else {
-          if (c <= ' ') {
-            // Throw away whitepace and control characters
-          } else if (c == '/') {
+        } else 
+		{
+          if (c <= ' ') 
+		  {
+            // Throw away whitepace and control characters 丢掉空白字符和控制字符
+          } else if (c == '/') 
+		  {
             // Block delete NOT SUPPORTED. Ignore character.
             // NOTE: If supported, would simply need to check the system if block delete is enabled.
-          } else if (c == '(') {
-            // Enable comments flag and ignore all characters until ')' or EOL.
-            // NOTE: This doesn't follow the NIST definition exactly, but is good enough for now.
+          } else if (c == '(') 
+		  {
+            // Enable comments flag and ignore all characters until ')' or EOL. 使能注释标记并且忽略所有字符直到')'或者EOL
+            // NOTE: This doesn't follow the NIST definition exactly, but is good enough for now. 注意：这并不完全遵循NIST的定义，但目前已经足够
             // In the future, we could simply remove the items within the comments, but retain the
-            // comment control characters, so that the g-code parser can error-check it.
+            // comment control characters, so that the g-code parser can error-check it. 将来，我们可以简单地删除注释中的项目，但保留注释控制字符，以便g代码解析器可以对其进行错误检查。
             line_flags |= LINE_FLAG_COMMENT_PARENTHESES;
-          } else if (c == ';') {
+          } else if (c == ';') 
+		  {
             // NOTE: ';' comment to EOL is a LinuxCNC definition. Not NIST.
             line_flags |= LINE_FLAG_COMMENT_SEMICOLON;
           // TODO: Install '%' feature
@@ -148,12 +161,16 @@ void protocol_main_loop()
             // where, during a program, the system auto-cycle start will continue to execute
             // everything until the next '%' sign. This will help fix resuming issues with certain
             // functions that empty the planner buffer to execute its task on-time.
-          } else if (char_counter >= (LINE_BUFFER_SIZE-1)) {
+          } else if (char_counter >= (LINE_BUFFER_SIZE-1)) 
+		  {
             // Detect line buffer overflow and set flag.
             line_flags |= LINE_FLAG_OVERFLOW;
-          } else if (c >= 'a' && c <= 'z') { // Upcase lowercase
+          } else if (c >= 'a' && c <= 'z') // Upcase lowercase
+		  { 
             line[char_counter++] = c-'a'+'A';
-          } else {
+          } 
+		  else 
+		  {
             line[char_counter++] = c;
           }
         }
